@@ -47,6 +47,7 @@ while Player1.player1_status is True:
         Player2.player2_status = True
         Player1.Hold()
         print(f"Player1, You hold the score: {Player1.hold_score}")
+        print("Player2's turn.")
 
     if action != 'h':
         Player1.Run_Total()
@@ -57,22 +58,24 @@ while Player1.player1_status is True:
         break
 
     while Player2.player2_status is True:
-        print("Player2's turn.")
+
         action = input("r = roll")
         if action == 'r':
             round_score = Player2.Roll_Dice()
             if round_score == 1:
                 Player2.player2_status = False
                 Player1.player1_status = True
-                print("Player2, you rolled 1.")
+                print(f"Player2, you rolled 1")
                 round_score = 0
                 Player2.score = round_score + Player2.hold_score
+                print(f"Round score is 1. Roll back to {Player2.score}")
 
         if action == 'h':
             Player2.player2_status = False
             Player1.player1_status = True
             Player2.Hold()
             print(f"Player2, You hold the score: {Player2.hold_score}")
+            print("Player1's turn.")
 
         if action != 'h':
             Player2.Run_Total()
